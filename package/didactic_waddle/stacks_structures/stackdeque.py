@@ -1,9 +1,9 @@
 from collections import deque
 from typing import NoReturn, Any
-from .stackexceptions import FullExcepetion, EmptyException
+from .stackexceptions import FullException, EmptyException
 
 
-class StackDequeve:
+class StackDeque:
     def __init__(self, size: int) -> NoReturn:
         self._stack = deque()
         self._size = size
@@ -23,7 +23,7 @@ class StackDequeve:
         if len(self._stack) < self._size:
             self._stack.append(value)
         else:
-            raise FullExcepetion
+            raise FullException
 
     def pop(self) -> Any:
         try:
