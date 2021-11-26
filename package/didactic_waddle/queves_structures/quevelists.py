@@ -2,8 +2,7 @@ from typing import Any, NoReturn
 
 
 class quievelist():
-
-    def __init__(self):
+    def __init__(self)-> NoReturn:
         self._queve = list()
 
     def isEmpty(self)-> bool:
@@ -33,7 +32,3 @@ class quievelist():
     def remove(self)-> NoReturn:
 
         self._queve.pop(0)
-
-cola= quievelist()
-print(cola.isEmpty())
-
