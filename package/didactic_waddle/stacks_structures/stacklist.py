@@ -1,4 +1,5 @@
 from typing import Any, NoReturn
+from .stackexceptions import FullExcepetion, EmptyException
 
 
 class StackList:
@@ -12,14 +13,17 @@ class StackList:
     def peek(self) -> Any:
         try:
             return self._stack[-1]
-        except KeyError:
-            pass
+        except IndexError:
+            raise EmptyException
 
     def push(self, value: Any) -> NoReturn:
         if self._size < len(self.stack):
             self._stack.append(value)
         else:
-            pass
+            raise FullExcepetion
 
     def pop(self) -> Any:
-        return self._stack.pop()
+        try:
+            return self._stack.pop()
+        except IndexError:
+            raise EmptyException

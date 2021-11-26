@@ -1,5 +1,6 @@
 from collections import deque
 from typing import NoReturn, Any
+from .stackexceptions import FullExcepetion, EmptyException
 
 
 class StackDequeve:
@@ -16,16 +17,16 @@ class StackDequeve:
             self._stack.append(temporal)
             return temporal
         except IndexError:
-            pass
+            raise EmptyException
 
     def push(self, value: Any) -> NoReturn:
         if len(self._stack) < self._size:
             self._stack.append(value)
         else:
-            pass
+            raise FullExcepetion
 
     def pop(self) -> Any:
         try:
             return self._stack.pop()
         except IndexError:
-            pass
+            raise EmptyException
