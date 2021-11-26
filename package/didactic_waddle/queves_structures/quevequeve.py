@@ -10,20 +10,10 @@ class QueveQueve:
         return self._queve.empty()
 
     def getFrontElement(self) -> Any:
-        try:
-            temporal = self._queve.get()
-            self._queve.put(temporal)
-            return temporal
-        except Empty:
-            pass
+        pass
 
     def getRearElement(self) -> Any:
-        try:
-            temporal = self._queve.get(False)
-            self._queve.put(temporal)
-            return temporal
-        except Full:
-            pass
+        pass
 
     def put(self, n) -> NoReturn:
 
