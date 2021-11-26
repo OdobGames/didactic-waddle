@@ -1,8 +1,10 @@
 from typing import Any, NoReturn
+from .queveexceptions import FullException, EmptyException
 
 
 class QuieveList():
-    def __init__(self) -> NoReturn:
+    def __init__(self, size: int) -> NoReturn:
+        self._size = size
         self._queve = list()
 
     def isEmpty(self) -> bool:
@@ -14,22 +16,28 @@ class QuieveList():
 
     def getFrontElement(self) -> Any:
 
-        if self.isEmpty():
-            return None
-        else:
+        try:
             return self._queve[0]
+        except IndexError:
+            raise EmptyException
 
     def getRearElement(self) -> Any:
 
-        if self.isEmpty():
-            return None
-        else:
+        try:
             return self._queve[len(self._queve)-1]
+        except IndexError:
+            raise EmptyException
 
-    def put(self, n) -> NoReturn:
+    def put(self, value: Any) -> NoReturn:
 
-        self._queve.append(n)
+        if self._size < len(self._queve):
+            self._queve.append(value)
+        else:
+            raise FullException
 
     def remove(self) -> NoReturn:
 
-        self._queve.pop(0)
+        try:
+            self._queve.pop(0)
+        except IndexError:
+            raise EmptyException

@@ -1,6 +1,6 @@
 from queue import LifoQueue, Empty, Full
 from typing import Any, NoReturn
-from .stackexceptions import FullExcepetion, EmptyException
+from .stackexceptions import FullException, EmptyException
 
 
 class StackLifoQueve:
@@ -22,7 +22,7 @@ class StackLifoQueve:
         try:
             self._stack.put(value)
         except Full:
-            raise FullExcepetion
+            raise FullException
 
     def pop(self) -> Any:
         try:
