@@ -1,5 +1,6 @@
 from queue import LifoQueue, Empty, Full
 from typing import Any, NoReturn
+from .stackexceptions import FullExcepetion, EmptyException
 
 
 class StackLifoQueve:
@@ -15,16 +16,16 @@ class StackLifoQueve:
             self._stack.put(temporal)
             return temporal
         except Empty:
-            pass
+            raise EmptyException
 
     def push(self, value: Any) -> NoReturn:
         try:
             self._stack.put(value)
         except Full:
-            pass
+            raise FullExcepetion
 
     def pop(self) -> Any:
         try:
             return self._stack.get()
         except Empty:
-            pass
+            raise EmptyException
