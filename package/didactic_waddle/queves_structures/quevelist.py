@@ -1,7 +1,7 @@
 from typing import Any, NoReturn
 
 
-class quievelist():
+class QuieveList():
     def __init__(self) -> NoReturn:
         self._queve = list()
 
