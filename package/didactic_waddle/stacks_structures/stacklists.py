@@ -1,7 +1,7 @@
 from typing import Any, NoReturn
 
 
-class stacklist:
+class StackList:
     def __init__(self, size: int) -> NoReturn:
         self._size = size
         self._stack = list()
@@ -23,4 +23,3 @@ class stacklist:
 
     def pop(self) -> Any:
         return self._stack.pop()
-    
