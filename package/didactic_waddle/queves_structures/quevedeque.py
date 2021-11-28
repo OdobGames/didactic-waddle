@@ -4,7 +4,7 @@ from queveexceptions import EmptyException, FullException
 
 
 class QueveDeque:
-    def __init__(self, size: int = 0) -> NoReturn:
+    def __init__(self, size: int) -> NoReturn:
         self._queve = deque()
         self._size = size
 
@@ -28,7 +28,7 @@ class QueveDeque:
 
     def put(self, value: Any) -> NoReturn:
 
-        if len(self._queve) < self._size:
+        if self._size > len(self._queve):
             self._queve.append(value)
         else:
             raise FullException
@@ -36,6 +36,6 @@ class QueveDeque:
     def remove(self) -> Any:
 
         try:
-            return self._queve.pop()
+            return self._queve.popleft()
         except IndexError:
             raise EmptyException

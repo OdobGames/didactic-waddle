@@ -2,7 +2,7 @@ from typing import Any, NoReturn
 from queveexceptions import EmptyException, FullException
 
 
-class QuieveList():
+class QueveList():
     def __init__(self, size: int) -> NoReturn:
         self._size = size
         self._queve = list()
@@ -30,7 +30,7 @@ class QuieveList():
 
     def put(self, value: Any) -> NoReturn:
 
-        if self._size < len(self._queve):
+        if self._size > len(self._queve):
             self._queve.append(value)
         else:
             raise FullException
