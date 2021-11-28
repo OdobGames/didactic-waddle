@@ -1,5 +1,5 @@
 from typing import Any, NoReturn
-from .stackexceptions import FullException, EmptyException
+from stackexceptions import EmptyException, FullException
 
 
 class StackList:

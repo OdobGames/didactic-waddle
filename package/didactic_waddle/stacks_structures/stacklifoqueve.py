@@ -1,6 +1,6 @@
 from queue import LifoQueue, Empty, Full
 from typing import Any, NoReturn
-from .stackexceptions import FullException, EmptyException
+from stackexceptions import EmptyException, FullException
 
 
 class StackLifoQueve:

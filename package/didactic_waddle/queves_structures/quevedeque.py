@@ -1,6 +1,6 @@
 from collections import deque
 from typing import NoReturn, Any
-from .queveexceptions import FullException, EmptyException
+from queveexceptions import EmptyException, FullException
 
 
 class QueveDeque:

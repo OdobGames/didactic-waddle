@@ -1,6 +1,6 @@
 from collections import deque
 from typing import NoReturn, Any
-from .stackexceptions import FullException, EmptyException
+from stackexceptions import EmptyException, FullException
 
 
 class StackDeque:

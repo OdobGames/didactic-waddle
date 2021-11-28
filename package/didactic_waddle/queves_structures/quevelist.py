@@ -1,5 +1,5 @@
 from typing import Any, NoReturn
-from .queveexceptions import FullException, EmptyException
+from queveexceptions import EmptyException, FullException
 
 
 class QuieveList():
