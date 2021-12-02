@@ -34,7 +34,7 @@ class QueveList():
     Busca el frente de la cola,
     que es el elemento en la posicion 0 de la lista
     Lo retorna si no hay ningun index error,
-    si no retorna una excepción personalizada.
+    si no alza una excepción personalizada.
     '''
 
     def getFrontElement(self) -> Any:
@@ -49,7 +49,7 @@ class QueveList():
     Busca el final de la cola, que es el ultimo elemento de la lista,
     es decir la posicion tamaño de la lista menos 1.
     Lo retorna si no hay ningun index error,
-    si no retorna una excepción personalizada.
+    si no alza una excepción personalizada.
     '''
 
     def getRearElement(self) -> Any:
@@ -63,7 +63,7 @@ class QueveList():
     Función put:
     Recibe un valor de cualquier tipo y lo agrega al final de la cola.
     Primero comprueba si el tamaño es el correcto, si es asi lo agrega,
-    de lo contrario retorna una excepcion personalizada.
+    de lo contrario alza una excepcion personalizada.
     '''
 
     def put(self, value: Any) -> NoReturn:
@@ -76,7 +76,7 @@ class QueveList():
     '''
     Función remove:
     Remueve el primer elemento al frente de la cola.
-    Si no hay elementos retorna una excepcion personalizada.
+    Si no hay elementos alza una excepcion personalizada.
     '''
 
     def remove(self) -> NoReturn:
