@@ -1,4 +1,3 @@
-
 '''
 EmptyException: Una excepcion personalizada para cuando la cola esta vacia,
 y genera un error.
