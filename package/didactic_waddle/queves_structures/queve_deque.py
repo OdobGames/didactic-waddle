@@ -1,38 +1,38 @@
-from typing import Any, NoReturn
-from queveexceptions import EmptyException, FullException
+from collections import deque
+from typing import NoReturn, Any
+from queve_exceptions import EmptyException, FullException
 
-""""Colas implementadas con listas de python"""
+"""Colas implementadas con la libreria de una cola doble en python"""
 
 
-class QueveList():
+class QueveDeque:
 
     '''
     Constructor:
     Size= Tamaño de la cola.
-    Queve= Se crea una lista vacia.
+    Queve= Se crea una cola doble vacia.
     '''
 
     def __init__(self, size: int) -> NoReturn:
+        self._queve = deque()
         self._size = size
-        self._queve = list()
 
     '''
     Función isEmpty:
-    Compara si la cola es igual una lista vacia,
-    si es asi retorna True, Si no retorna False.
+    Retorna el booleano de la cola, al estar vacia retornara False,
+    o al tener mas de un elemento retorna True.
+    Pero al tener not se niega el booleano, consiguiendo asi,
+    que si la cola esta vacia sera True si no False.
     '''
 
     def isEmpty(self) -> bool:
 
-        if self._queve == []:
-            return True
-        else:
-            return False
+        return not bool(self._queve)
 
     '''
     Función getFrontElement:
-    Busca el frente de la cola,
-    que es el elemento en la posicion 0 de la lista
+    Busca el elemento al frente de la cola,
+    que es el elemento en la posicion 0 de la cola doble
     Lo retorna si no hay ningun index error,
     si no alza una excepción personalizada.
     '''
@@ -46,8 +46,9 @@ class QueveList():
 
     '''
     Función getRearElement:
-    Busca el final de la cola, que es el ultimo elemento de la lista,
-    es decir la posicion tamaño de la lista menos 1.
+    Busca el elemento al final de la cola, que es el ultimo elemento
+    a la derecha de la coladoble.
+    Es decir la posicion tamaño de la lista menos 1.
     Lo retorna si no hay ningun index error,
     si no alza una excepción personalizada.
     '''
@@ -61,7 +62,8 @@ class QueveList():
 
     '''
     Función put:
-    Recibe un valor de cualquier tipo y lo agrega al final de la cola.
+    Recibe un valor de cualquier tipo y lo agrega al final
+    a derecha de la cola doble.
     Primero comprueba si el tamaño es el correcto, si es asi lo agrega,
     de lo contrario alza una excepcion personalizada.
     '''
@@ -75,13 +77,13 @@ class QueveList():
 
     '''
     Función remove:
-    Remueve el primer elemento al frente de la cola.
+    Remueve el primer elemento a la izquierda de la cola doble.
     Si no hay elementos alza una excepcion personalizada.
     '''
 
-    def remove(self) -> NoReturn:
+    def remove(self) -> Any:
 
         try:
-            self._queve.pop(0)
+            return self._queve.popleft()
         except IndexError:
             raise EmptyException

@@ -1,6 +1,6 @@
 from queue import Queue
 from typing import Any, NoReturn
-from queveexceptions import EmptyException, FullException
+from queve_exceptions import EmptyException, FullException
 
 """Colas implementadas con la libreria de colas simples en python"""
 
