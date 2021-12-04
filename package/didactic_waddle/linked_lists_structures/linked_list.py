@@ -56,5 +56,32 @@ class LinkedList:
             return_value = return_value.next
         return return_value.data
 
+    def __delitem__(self, key):
+        try:
+            if abs(key) > self._len:
+                raise KeyError('LinkedList index our of range')
+        except TypeError:
+            raise TypeError(
+                f'LinkedList indices must be integers not {type(key).__name__}'
+                )
+        if key < 0:
+            key = self._len + key
+        deletion_value = self._head
+        deletion_parent = None
+        for _ in range(key):
+            deletion_parent = deletion_value
+            deletion_value = deletion_value.next
+        deletion_parent.next = deletion_value.next
+        self._len -= 1
+
+    def index(self, value):
+        for i, iteration_value in enumerate(self):
+            if value == iteration_value:
+                return i
+        raise ValueError(f'{value} is not in LinkedList')
+
     def isempty(self):
         return bool(self._len)
+
+    def __str__(self):
+        return ','.join([str(x) for x in self])
