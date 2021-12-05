@@ -123,7 +123,3 @@ class QueveTest:
         tests['put'] = self.putting(size, samples)
         tests['remove'] = self.removing(size, samples)
         return tests
-
-
-A = QueveTest()
-print(A.integral_test(100, 100))
