@@ -28,4 +28,3 @@ class Hash:
                 print(j, end=" ")
 
             print()
-
