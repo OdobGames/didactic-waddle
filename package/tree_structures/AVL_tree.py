@@ -122,6 +122,80 @@ class AVLTree:
             yield from self.postorder(root._right)
             yield root
 
+    def min_value_node(self, node):
+        current = node
+
+        # loop down to find the leftmost leaf
+        while(current._left is not None):
+            current = current._left
+
+        return current
+
+    def delete_node(self, root, key):
+
+        # Base Case
+        if root is None:
+            return root
+
+        # If the key to be deleted
+        # is smaller than the root's
+        # key then it lies in  left subtree
+        if key < root._data:
+            root._left = self.delete_node(root._left, key)
+
+        # If the kye to be delete
+        # is greater than the root's key
+        # then it lies in right subtree
+        elif(key > root._data):
+            root._right = self.delete_node(root._right, key)
+
+        # If key is same as root's key, then this is the node
+        # to be deleted
+        else:
+
+            # Node with only one child or no child
+            if root._left is None:
+                temp = root._right
+                root = None
+                return temp
+
+            elif root._right is None:
+                temp = root._left
+                root = None
+                return temp
+
+            # Node with two children:
+            # Get the inorder successor
+            # (smallest in the right subtree)
+            temp = self.min_value_node(root._right)
+
+            # Copy the inorder successor's
+            # content to this node
+            root._data = temp._data
+
+            # Delete the inorder successor
+            root._right = self.delete_node(root._right, temp._data)
+
+        root._height = 1 + max(self.height(root._left),
+                               self.height(root._right))
+
+        node_balance = self.balance(root)
+
+        if node_balance > 1:
+            if key < root._left._data:
+                return self.right_rotate(root)
+            else:
+                root._left = self.left_rotate(root._left)
+                return self.right_rotate(root)
+        if node_balance < -1:
+            if key > root._right._data:
+                return self.left_rotate(root)
+            else:
+                root._right = self.right_rotate(root._right)
+                return self.left_rotate(root)
+
+        return root
+
 
 AVl = AVLTree()
 root = None
@@ -129,12 +203,16 @@ root = AVl.append(50, root)
 root = AVl.append(70, root)
 root = AVl.append(30, root)
 root = AVl.append(40, root)
+root = AVl.append(80, root)
 root = AVl.append(20, root)
+root = AVl.append(60, root)
 
-print('inorder', end=' ')
-for x in AVl.inorder(root):
+print('preorder', end=' ')
+for x in AVl.preorder(root):
     print(repr(x), end=' ')
 print('')
+
+root = AVl.delete_node(root, 30)
 
 print('preorder', end=' ')
 for x in AVl.preorder(root):
@@ -144,4 +222,3 @@ print('')
 print('postorder', end=' ')
 for x in AVl.postorder(root):
     print(repr(x), end=' ')
-print('')
