@@ -17,8 +17,41 @@ class BST_tree:
             print(root.key, end=" ")
             self.inorder(root.right)
 
+    def preorder(self, root):
+        if root is not None:
+            print(root.key, end=" ")
+            self.inorder(root.left)
+            self.inorder(root.right)
+
+    def postorder(self, root):
+        if root is not None:
+            self.inorder(root.left)
+            self.inorder(root.right)
+            print(root.key, end=" ")
+
+    def findParent(self, node, val, parent) -> None:
+        if (node is None):
+            return
+
+        # If current node is
+        # the required node
+        if (node.key == val):
+
+            # Print its parent
+            print(parent)
+        else:
+
+            # Recursive calls
+            # for the children
+            # of the current node
+            # Current node is now
+            # the new parent
+            self.findParent(node.left, val, node.key)
+            self.findParent(node.right, val, node.key)
+
     # A utility function to insert a
     # new node with given key in BST
+
     def insert(self, node, key):
 
         # If the tree is empty, return a new node
