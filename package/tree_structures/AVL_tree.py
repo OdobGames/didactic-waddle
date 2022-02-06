@@ -5,6 +5,13 @@ class AVLTreeNode:
         self._right = None
         self._height = 1
 
+    def __str__(self):
+        return (f'{self._data} ->'
+                + '[{self._left._data}, {self._right._data}]')
+
+    def __repr__(self):
+        return (f'{self._data}')
+
 
 class AVLTree:
 
@@ -72,3 +79,69 @@ class AVLTree:
         root._height = 1 + max(self.height(root._left),
                                self.height(root._right))
         return root
+
+    def search(self, root, data):
+        try:
+            if data == root._data:
+                return root
+        except AttributeError:
+            return root
+        if data < root._data:
+            return self.search(root._left, data)
+        else:
+            return self.search(root._right, data)
+
+    def predecessor(self, root, data):
+        try:
+            if data > root._data:
+                if data == root._right._data:
+                    return root
+                return self.predecessor(root._right, data)
+            else:
+                if data == root._left._data:
+                    return root
+                return self.predecessor(root._left, data)
+        except AttributeError:
+            return None
+
+    def inorder(self, root):
+        if root is not None:
+            yield from self.inorder(root._left)
+            yield root
+            yield from self.inorder(root._right)
+
+    def preorder(self, root):
+        if root is not None:
+            yield root
+            yield from self.preorder(root._left)
+            yield from self.preorder(root._right)
+
+    def postorder(self, root):
+        if root is not None:
+            yield from self.postorder(root._left)
+            yield from self.postorder(root._right)
+            yield root
+
+
+AVl = AVLTree()
+root = None
+root = AVl.append(50, root)
+root = AVl.append(70, root)
+root = AVl.append(30, root)
+root = AVl.append(40, root)
+root = AVl.append(20, root)
+
+print('inorder', end=' ')
+for x in AVl.inorder(root):
+    print(repr(x), end=' ')
+print('')
+
+print('preorder', end=' ')
+for x in AVl.preorder(root):
+    print(repr(x), end=' ')
+print('')
+
+print('postorder', end=' ')
+for x in AVl.postorder(root):
+    print(repr(x), end=' ')
+print('')
