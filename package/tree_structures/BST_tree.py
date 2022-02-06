@@ -41,7 +41,7 @@ class BST_tree:
     # found in that tree. Note that the
     # entire tree does not need to be searched
 
-    def minValueNode(node):
+    def minValueNode(self, node):
         current = node
 
         # loop down to find the leftmost leaf
