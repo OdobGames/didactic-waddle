@@ -29,6 +29,19 @@ class BST_tree:
             self.inorder(root.right)
             print(root.key, end=" ")
 
+    def search(self, root, key):
+
+        # Base Cases: root is null or key is present at root
+        if root is None or root.key == key:
+            return root
+
+        # Key is greater than root's key
+        if root.key < key:
+            return self.search(root.right, key)
+
+        # Key is smaller than root's key
+        return self.search(root.left, key)
+
     def findParent(self, node, val, parent) -> None:
         if (node is None):
             return
