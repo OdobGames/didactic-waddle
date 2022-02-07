@@ -57,28 +57,34 @@ class AVLTree:
         return left_weight - right_weight
 
     def right_rotate(self, node):
-        root = node._left
-        horphan = root._right
-        root._right = node
-        node._left = horphan
+        try:
+            root = node._left
+            horphan = root._right
+            root._right = node
+            node._left = horphan
 
-        node._height = 1 + max(self.height(node._left),
-                               self.height(node._right))
-        root._height = 1 + max(self.height(root._left),
-                               self.height(root._right))
-        return root
+            node._height = 1 + max(self.height(node._left),
+                                   self.height(node._right))
+            root._height = 1 + max(self.height(root._left),
+                                   self.height(root._right))
+            return root
+        except AttributeError:
+            return node
 
     def left_rotate(self, node):
-        root = node._right
-        horphan = root._left
-        root._left = node
-        node._right = horphan
+        try:
+            root = node._right
+            horphan = root._left
+            root._left = node
+            node._right = horphan
 
-        node._height = 1 + max(self.height(node._left),
-                               self.height(node._right))
-        root._height = 1 + max(self.height(root._left),
-                               self.height(root._right))
-        return root
+            node._height = 1 + max(self.height(node._left),
+                                   self.height(node._right))
+            root._height = 1 + max(self.height(root._left),
+                                   self.height(root._right))
+            return root
+        except AttributeError:
+            return node
 
     def search(self, root, data):
         try:
