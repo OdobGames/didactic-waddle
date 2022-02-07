@@ -195,30 +195,3 @@ class AVLTree:
                 return self.left_rotate(root)
 
         return root
-
-
-AVl = AVLTree()
-root = None
-root = AVl.append(50, root)
-root = AVl.append(70, root)
-root = AVl.append(30, root)
-root = AVl.append(40, root)
-root = AVl.append(80, root)
-root = AVl.append(20, root)
-root = AVl.append(60, root)
-
-print('preorder', end=' ')
-for x in AVl.preorder(root):
-    print(repr(x), end=' ')
-print('')
-
-root = AVl.delete_node(root, 30)
-
-print('preorder', end=' ')
-for x in AVl.preorder(root):
-    print(repr(x), end=' ')
-print('')
-
-print('postorder', end=' ')
-for x in AVl.postorder(root):
-    print(repr(x), end=' ')
