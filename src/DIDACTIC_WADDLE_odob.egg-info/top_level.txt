@@ -1,0 +1,7 @@
+graph_structures
+hash_structure
+linked_lists_structures
+queves_structures
+sets_structures
+stacks_structures
+tree_structures

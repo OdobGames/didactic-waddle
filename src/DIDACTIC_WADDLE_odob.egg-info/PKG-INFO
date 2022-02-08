@@ -1,0 +1,22 @@
+Metadata-Version: 2.1
+Name: DIDACTIC-WADDLE-odob
+Version: 0.1.0
+Summary: A package for data structures
+Home-page: https://github.com/YamiYume/didactic-waddle
+Author: odob
+Author-email: oordonezb@unal.edu.co
+License: UNKNOWN
+Project-URL: Git hub, https://github.com/YamiYume/didactic-waddle
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+License-File: LICENSE
+
+# DIDACTIC-WADDLE
+Data structures implementations.
+You can use
+[Github-DIDACTIC WADDLE](https://github.com/YamiYume/didactic-waddle)
+
